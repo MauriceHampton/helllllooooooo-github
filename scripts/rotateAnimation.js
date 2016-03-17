@@ -1,6 +1,4 @@
-var looper;
-var degrees = 0;
-function rotateAnimation(el, speed){
+function rotateAnimation(el, speed, degrees){
 	
 	var elem = document.getElementById(el)
 	if(navigator.userAgent.match("Chrome")){
@@ -11,10 +9,9 @@ function rotateAnimation(el, speed){
 		elem.style.transform = "rotate("+degrees+"deg)"
 	}
 
-	looper = setTimeout('rotateAnimation(\''+el+'\','+speed+')',speed);
-	degrees++;
-	if(degrees > 359){
-		degrees = 1;
+	var newDegrees = degrees + speed;
+	var timeoutString = 'rotateAnimation("' + el + '", ' + speed + ', ' + newDegrees +')'
+	setTimeout(timeoutString, 5);
+	
 	}
-	// document.getElementById("status").innerHTML = "rotate("+degrees+"deg)";
-}
+
